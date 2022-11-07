@@ -146,13 +146,15 @@ public-ip = "0.2.2"
 e2p-fileflags = { git = "https://github.com/michaellass/e2p-fileflags" }
 
 [features]
-default = []
+default = ["vergen"]
 console = ["tokio/tracing", "dep:console-subscriber"]
 grpc-reflection = ["tonic-reflection"]
+vergen = ["dep:vergen"]
+
 
 [build-dependencies]
 anyhow = "1"
-vergen = "7"
+vergen = { version = "7", optional = true }
 
 [dev-dependencies]
 bytes-literal = { git = "https://github.com/vorot93/bytes-literal" }

@@ -200,6 +200,7 @@ pub mod duration_as_millis {
     }
 }
 
+#[cfg(features = "vergen")]
 pub fn version_string() -> String {
     format!(
         "akula/v{}-{}-{}-{}/{}/rustc{}",
@@ -210,6 +211,11 @@ pub fn version_string() -> String {
         env!("VERGEN_CARGO_TARGET_TRIPLE"),
         env!("VERGEN_RUSTC_SEMVER")
     )
+}
+
+#[cfg(not(features ="vergen"))]
+pub fn version_string() -> String {
+    "not_available".to_string()
 }
 
 #[cfg(test)]
